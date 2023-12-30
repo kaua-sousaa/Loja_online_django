@@ -1,0 +1,29 @@
+{% extends 'telas/base.html' %}
+
+{% block conteudo %}
+
+<div class="container mt-4">
+    <h2>Nossos Produtos</h2>
+
+    <div class="row">
+        {% for produto in produtos %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="{{ produto.imagem.url }}" class="card-img-top" alt="{{ produto.nome}}">
+                <div class="card-body">
+                    <h5 class="card-title"> {{ produto.nome }}</h5>
+                    <p class="card-text"> {{ produto.descricao }}</p>
+                    <form action="{% url 'excluir_item' %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="id_item" value="{{produto.id}}">
+                        <button type="submit">EXCLUIR</button>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'telas/base.html' %}
+{% block conteudo %}
+
+<h1>Cadastro de produtos</h1>
+<form action="{% url 'cadastrar_item' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Nome do produto</label>
+        <input type="text" name="nome" class="form-control" id="exampleFormControlInput1" placeholder="Nome do produto" >
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Descrição do produto</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="descricao"></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="formFile" class="form-label">Imagem do produto</label>
+        <input class="form-control" name="imagem" type="file" id="formFile">
+    </div>
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+</form>
+
+
+{% endblock %}
